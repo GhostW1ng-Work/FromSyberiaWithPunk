@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _coinsCount;
 
+    public int CoinsCount => _coinsCount;
+
     public event UnityAction<int> CoinAdded;
 
     private void Awake()
@@ -28,5 +30,10 @@ public class Player : MonoBehaviour
             CoinAdded(_coinsCount);
             Destroy(coin.gameObject);
         }
+    }
+
+    public void DeleteCoins(int deleteCoinsCount)
+    {
+        _coinsCount -= deleteCoinsCount;
     }
 }
