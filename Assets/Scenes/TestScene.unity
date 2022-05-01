@@ -912,6 +912,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1881682099, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
+      propertyPath: _speedLimit
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881682099, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
+      propertyPath: _targetMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881682099, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
+      propertyPath: _currentMoveSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1906928214, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
       propertyPath: _startPosition
       value: 
@@ -969,6 +981,11 @@ PrefabInstance:
 --- !u!1 &3838416343497231839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1009851481, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
+  m_PrefabInstance: {fileID: 3838416343497231838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3838416343497231840 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3838416342251838552, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
   m_PrefabInstance: {fileID: 3838416343497231838}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6730386074091893978
@@ -1035,6 +1052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1824975654, guid: 8adcb944f2860474eb3d760fefb06612, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 3838416343497231840}
     - target: {fileID: 7862814439458006501, guid: 8adcb944f2860474eb3d760fefb06612, type: 3}
       propertyPath: m_Name
       value: Main Camera

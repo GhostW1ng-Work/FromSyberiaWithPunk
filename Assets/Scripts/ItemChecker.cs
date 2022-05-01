@@ -10,6 +10,7 @@ public class ItemChecker : MonoBehaviour
     {
         if(other.TryGetComponent(out Player player))
         {
+            Debug.Log("Игрок");
         }
     }
 }

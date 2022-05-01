@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
         if(other.TryGetComponent(out Coin coin))
         {
             _coinsCount++;
-            CoinAdded(_coinsCount);
             Destroy(coin.gameObject);
+            CoinAdded(_coinsCount);
         }
     }
 

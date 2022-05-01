@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _currentMoveSpeed;
+    [SerializeField] private float _targetMoveSpeed;
+    [SerializeField] private float _speedLimit;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _speedSum;
@@ -16,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _originalStepOffset = _characterController.stepOffset;
+        _currentMoveSpeed = _targetMoveSpeed;
     }
 
     void Update()
@@ -24,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * _moveSpeed;
+        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * _currentMoveSpeed;
         movementDirection.Normalize();
 
         _ySpeed += Physics.gravity.y * Time.deltaTime;
@@ -67,13 +70,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.TryGetComponent(out Slower slower) && _currentMoveSpeed > _speedLimit )
+        {
+            _currentMoveSpeed -= slower.SlowRate;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _currentMoveSpeed = _targetMoveSpeed;
+    }
+
     public void MoveSpeedUp()
     {
-        _moveSpeed += _speedSum;
+        _targetMoveSpeed += _speedSum;
+        _currentMoveSpeed = _targetMoveSpeed;
     }
 
     public void JumpSpeedUp()
     {
         _jumpSpeed += 5;
     }
+
 }

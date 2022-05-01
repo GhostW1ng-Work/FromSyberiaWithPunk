@@ -9,6 +9,8 @@ public class ItemActivator : MonoBehaviour
 
     private bool _itemIsBuyed = false;
 
+    public bool ItemIsBuyed => _itemIsBuyed;
+
     private void Update()
     {
         
