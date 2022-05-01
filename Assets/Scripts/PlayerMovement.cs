@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _speedSum;
     [SerializeField] private float _jumpSpeedSum;
+    [SerializeField] private AudioClip _jumpSound;
 
     private CharacterController _characterController;
     private float _ySpeed;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
+                AudioSource.PlayClipAtPoint(_jumpSound, transform.position, 100);
                 _ySpeed = _jumpSpeed;
             }
         }
