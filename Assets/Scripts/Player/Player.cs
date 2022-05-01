@@ -35,5 +35,6 @@ public class Player : MonoBehaviour
     public void DeleteCoins(int deleteCoinsCount)
     {
         _coinsCount -= deleteCoinsCount;
+        CoinAdded(_coinsCount);
     }
 }
