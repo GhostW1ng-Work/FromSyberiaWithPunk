@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SyberiaTest.unity
     guid: f63bf9140be01694783443cc13c5fcc3
+  - enabled: 1
+    path: Assets/Scenes/Egypt.unity
+    guid: 7c12b17850abeb743824d10bbae97541
+  - enabled: 0
+    path: Assets/Scenes/Paris.unity
+    guid: a67c64a1a45e64d438c420fae1a6f81b
+  - enabled: 0
+    path: Assets/Scenes/Pekin.unity
+    guid: 578a3ef2e825ad4449e245e48ecf79a6
   m_configObjects: {}

@@ -306,6 +306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinsCount: 0
+  _camera: {fileID: 0}
+  _audio: {fileID: 8300000, guid: 72d4f212dc0d9234fb85c677266a506c, type: 3}
 --- !u!143 &1881682100
 CharacterController:
   m_ObjectHideFlags: 0
@@ -336,10 +338,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c31f5ba1b1c1a84e8fb3c2ad6649d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _currentMoveSpeed: 0
+  _camera: {fileID: 0}
+  _targetMoveSpeed: 5
+  _speedLimit: 3
   _rotationSpeed: 720
   _jumpSpeed: 5
   _speedSum: 5
+  _jumpSpeedSum: 0
+  _jumpSound: {fileID: 8300000, guid: 8816457503f19d94989097b14200a01c, type: 3}
 --- !u!114 &1906928214
 MonoBehaviour:
   m_ObjectHideFlags: 0
