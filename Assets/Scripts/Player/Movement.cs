@@ -4,11 +4,11 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private float _rotationSpeed;
 
     private Rigidbody _rigidBody;
     private Vector3 _inputVector;
     private float _ySpeed;
+    [SerializeField] private bool _haveMoveSpeedUpItem = false;
 
 
     private void Start()
@@ -36,4 +36,5 @@ public class Movement : MonoBehaviour
     {
         _rigidBody.velocity = _inputVector * _moveSpeed * Time.fixedDeltaTime;
     }
+
 }

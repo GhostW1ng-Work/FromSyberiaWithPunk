@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
-    public float rotationSpeed;
-    public float jumpSpeed;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _jumpSpeed;
+    [SerializeField] private float _speedSum;
+    [SerializeField] private float _jumpSpeedSum;
 
-    private CharacterController characterController;
-    private float ySpeed;
-    private float originalStepOffset;
+    private CharacterController _characterController;
+    private float _ySpeed;
+    private float _originalStepOffset;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
-        originalStepOffset = characterController.stepOffset;
+        _characterController = GetComponent<CharacterController>();
+        _originalStepOffset = _characterController.stepOffset;
     }
 
     void Update()
@@ -22,36 +24,56 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
+        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * _moveSpeed;
         movementDirection.Normalize();
 
-        ySpeed += Physics.gravity.y * Time.deltaTime;
+        _ySpeed += Physics.gravity.y * Time.deltaTime;
 
-        if (characterController.isGrounded)
+        if (_characterController.isGrounded)
         {
-            characterController.stepOffset = originalStepOffset;
-            ySpeed = -0.5f;
+            _characterController.stepOffset = _originalStepOffset;
+            _ySpeed = -0.5f;
 
             if (Input.GetButtonDown("Jump"))
             {
-                ySpeed = jumpSpeed;
+                _ySpeed = _jumpSpeed;
             }
         }
         else
         {
-            characterController.stepOffset = 0;
+            _characterController.stepOffset = 0;
         }
 
         Vector3 velocity = movementDirection * magnitude;
-        velocity.y = ySpeed;
+        velocity.y = _ySpeed;
 
-        characterController.Move(velocity * Time.deltaTime);
+        _characterController.Move(velocity * Time.deltaTime);
 
         if (movementDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
         }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            MoveSpeedUp();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            JumpSpeedUp();
+        }
+    }
+
+    public void MoveSpeedUp()
+    {
+        _moveSpeed += _speedSum;
+    }
+
+    public void JumpSpeedUp()
+    {
+        _jumpSpeed += 5;
     }
 }
