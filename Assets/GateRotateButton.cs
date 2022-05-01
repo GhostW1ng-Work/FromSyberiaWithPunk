@@ -38,5 +38,6 @@ public class GateRotateButton : MonoBehaviour
     public void OnButtonClicked()
     {
         AudioSource.PlayClipAtPoint(_buttonClip, transform.position);
+        _gate.GatePlayAudio();
     }
 }

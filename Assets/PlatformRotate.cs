@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class PlatformRotate : MonoBehaviour
 {
+    [SerializeField] private AudioSource _gateAudio;
+    [SerializeField] private AudioClip _gateAudioClip;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -27,5 +30,10 @@ public class PlatformRotate : MonoBehaviour
     public void BackGate()
     {
         transform.DOLocalRotate(new Vector3(0, 0, 0), 10);
+    }
+
+    public void GatePlayAudio()
+    {
+        _gateAudio.PlayOneShot(_gateAudioClip);
     }
 }
