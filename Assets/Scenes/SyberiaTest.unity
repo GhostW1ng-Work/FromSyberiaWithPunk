@@ -141,6 +141,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.380568, y: 5.5897512, z: 6.3805704}
   m_Center: {x: -3.1506722, y: 4.6039796, z: 14.958216}
+--- !u!20 &35482141 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7862814439458006523, guid: 8adcb944f2860474eb3d760fefb06612, type: 3}
+  m_PrefabInstance: {fileID: 416769663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &86585777 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8106112335518123677, guid: bf11ef78d3f494f439299c006bbd5226, type: 3}
@@ -1313,7 +1318,11 @@ PrefabInstance:
     - target: {fileID: 3838416342251838550, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
       propertyPath: _audio
       value: 
-      objectReference: {fileID: 8300000, guid: 2b87d301278f41d4aae7f93e14b8b1df, type: 3}
+      objectReference: {fileID: 8300000, guid: 72d4f212dc0d9234fb85c677266a506c, type: 3}
+    - target: {fileID: 3838416342251838550, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 35482141}
     - target: {fileID: 3838416342251838552, guid: 37c1004a4d5807644b5f6f1cc1d755c9, type: 3}
       propertyPath: m_RootOrder
       value: 3

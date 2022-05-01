@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _coinsCount;
+    [SerializeField] private Camera _camera;
     [SerializeField] private AudioClip _audio;
 
     public int CoinsCount => _coinsCount;
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
 
         if(other.TryGetComponent(out Coin coin))
         {
-            AudioSource.PlayClipAtPoint(_audio, transform.position, 100);
+            AudioSource.PlayClipAtPoint(_audio, _camera.transform.position, 100);
             _coinsCount++;
             Destroy(coin.gameObject);
             CoinAdded(_coinsCount);

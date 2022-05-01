@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _currentMoveSpeed;
+    [SerializeField] private Camera _camera;
     [SerializeField] private float _targetMoveSpeed;
     [SerializeField] private float _speedLimit;
     [SerializeField] private float _rotationSpeed;
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                AudioSource.PlayClipAtPoint(_jumpSound, transform.position, 100);
+                AudioSource.PlayClipAtPoint(_jumpSound, _camera.transform.position, 100);
                 _ySpeed = _jumpSpeed;
             }
         }
