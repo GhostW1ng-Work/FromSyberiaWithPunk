@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpSpeedSum;
     [SerializeField] private AudioClip _jumpSound;
 
+    private Animator _animator;
     private CharacterController _characterController;
     private float _ySpeed;
     private float _originalStepOffset;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
         _originalStepOffset = _characterController.stepOffset;
         _currentMoveSpeed = _targetMoveSpeed;
     }
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * _currentMoveSpeed;
         movementDirection.Normalize();
+        _animator.SetFloat("Speed", magnitude);
 
         _ySpeed += Physics.gravity.y * Time.deltaTime;
 
@@ -71,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
         {
             JumpSpeedUp();
         }
+
+        
     }
 
     private void OnTriggerStay(Collider other)

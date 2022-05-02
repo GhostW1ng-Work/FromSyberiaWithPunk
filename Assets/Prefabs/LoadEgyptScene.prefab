@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197cd72d4fcb8fd40bfc334d235ef314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _needCoinsAmount: 1
+  _player: {fileID: 0}
+  _needCoinsAmount: 3
 --- !u!54 &1636528822934713435
 Rigidbody:
   m_ObjectHideFlags: 0

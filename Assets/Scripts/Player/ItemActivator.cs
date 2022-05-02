@@ -4,40 +4,50 @@ using UnityEngine;
 
 public class ItemActivator : MonoBehaviour
 {
+    [SerializeField] private Player _player;
+    [SerializeField] private PanelShower _panelShower;
+    [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private GameObject _item;
     [SerializeField] private int _itemCost;
 
     private bool _itemIsBuyed = false;
-
-    public bool ItemIsBuyed => _itemIsBuyed;
 
     private void Update()
     {
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void BuySpeedUp()
     {
-        if(other.TryGetComponent(out Player player))
+        if(_player.CoinsCount >= _itemCost && _itemIsBuyed == false)
         {
-            if (_itemIsBuyed == false)
-            {
-                if (player.CoinsCount >= _itemCost)
-                {
-                    _itemIsBuyed = true;
-                    _item.gameObject.SetActive(true);
-                    player.DeleteCoins(_itemCost);
-                }
-                else
-                {
-                    Debug.Log("Нищеброд");
-                }
-            }
-            else
-            {
-                Debug.Log("Ты уже купил!!!");
-            }
+            _itemIsBuyed = true;
+            _item.gameObject.SetActive(true);
+            _player.DeleteCoins(_itemCost);
+            _playerMovement.MoveSpeedUp();
+            _panelShower.ClosePanel();
+            _panelShower.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Проваливай");
         }
     }
 
+    public void BuyJumpUp()
+    {
+        if (_player.CoinsCount >= _itemCost && _itemIsBuyed == false)
+        {
+            _itemIsBuyed = true;
+            _item.gameObject.SetActive(true);
+            _player.DeleteCoins(_itemCost);
+            _playerMovement.JumpSpeedUp();
+            _panelShower.ClosePanel();
+            _panelShower.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Проваливай");
+        }
+    }
 }

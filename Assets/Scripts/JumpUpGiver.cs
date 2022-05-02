@@ -13,16 +13,5 @@ public class JumpUpGiver : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out PlayerMovement player) && _isJumpedUp == false)
-        {
-            if (_activator.ItemIsBuyed == true)
-            {
-                _isJumpedUp = true;
-                player.JumpSpeedUp();
-            }
-        }
-
-    }
+    
 }

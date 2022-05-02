@@ -5,21 +5,14 @@ using IJunior.TypedScenes;
 
 public class SceneEgyptSwitcher : MonoBehaviour
 {
+    [SerializeField] private Player _player;
     [SerializeField] private int _needCoinsAmount;
 
-    private void OnTriggerEnter(Collider other)
+    public void LoadEgyptScene()
     {
-        if(other.TryGetComponent(out Player player))
-        {
-            if(player.CoinsCount >= _needCoinsAmount)
-            {
-                player.DeleteCoins(_needCoinsAmount);
-                Egypt.Load();
-            }
-            else
-            {
-                Debug.Log("ПАШОЛ НАХУЙ");
-            }
-        }
+        if (_player.CoinsCount >= _needCoinsAmount)
+            Egypt.Load();
+        else
+            Debug.Log("Недостаточно средств");   
     }
 }
