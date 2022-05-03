@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Pekin.unity
     guid: 578a3ef2e825ad4449e245e48ecf79a6
+  - enabled: 1
+    path: Assets/Scenes/Paris2.unity
+    guid: db93ae99eea4dfb429ae65220a9efbb5
   m_configObjects: {}

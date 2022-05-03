@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController _characterController;
     private float _ySpeed;
     private float _originalStepOffset;
+    private float _standartMoveSpeed;
 
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _originalStepOffset = _characterController.stepOffset;
+        _standartMoveSpeed = _targetMoveSpeed;
         _currentMoveSpeed = _targetMoveSpeed;
     }
 
@@ -82,18 +84,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.TryGetComponent(out Slower slower) && _currentMoveSpeed > _speedLimit )
         {
-            _currentMoveSpeed -= slower.SlowRate;
+            Debug.Log("Работает");
+            _targetMoveSpeed -= slower.SlowRate;
+            _currentMoveSpeed = _targetMoveSpeed;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        _targetMoveSpeed = _standartMoveSpeed;
         _currentMoveSpeed = _targetMoveSpeed;
     }
 
     public void MoveSpeedUp()
     {
         _targetMoveSpeed += _speedSum;
+        _standartMoveSpeed = _targetMoveSpeed;
         _currentMoveSpeed = _targetMoveSpeed;
     }
 
