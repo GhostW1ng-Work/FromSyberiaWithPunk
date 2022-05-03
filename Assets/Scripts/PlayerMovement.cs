@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void JumpSpeedUp()
     {
-        _jumpSpeed += 5;
+        _jumpSpeed += _jumpSpeedSum;
     }
 
 }
