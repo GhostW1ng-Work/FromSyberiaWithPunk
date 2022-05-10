@@ -65,19 +65,7 @@ public class PlayerMovement : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            MoveSpeedUp();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            JumpSpeedUp();
-        }
-
-        
+        }        
     }
 
     private void OnTriggerStay(Collider other)

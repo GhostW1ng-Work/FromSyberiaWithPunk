@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int _coinsCount;
     [SerializeField] private Camera _camera;
     [SerializeField] private AudioClip _audio;
+    [SerializeField] private Vector3 _standartPosition;
 
     public int CoinsCount => _coinsCount;
 
@@ -32,6 +33,19 @@ public class Player : MonoBehaviour
             _coinsCount++;
             Destroy(coin.gameObject);
             CoinAdded(_coinsCount);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = _standartPosition;
         }
     }
 
